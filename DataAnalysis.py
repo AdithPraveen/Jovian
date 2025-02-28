@@ -34,13 +34,6 @@ def plotting(files,i1,if_avg=True):
 
     vfft = jax.vmap(single_fft)
 
-    def single_fft(arr):
-        n = len(arr)
-        _ = jnp.fft.fft(arr)
-        return _[:n//2]
-
-    vfft = jax.vmap(single_fft)
-
     out = vfft(V)
     
     if if_avg:
